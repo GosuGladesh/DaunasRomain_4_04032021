@@ -19,5 +19,11 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 function launchModal() {
   modalbg.style.display = "block";
 }
+// close modal form
+const modalCloseBtn = document.querySelector(".close");
+modalCloseBtn.addEventListener("click",closeModal);
 
+function closeModal() {
+  modalbg.style.display = "none";
+}
 
