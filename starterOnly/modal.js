@@ -72,13 +72,14 @@ function cguValidation() {
   }    
 }
 function locationValidation() {
-  let locations = document.querySelectorAll('input[type=radio]');
-  for (let location in locations) {
+  let locations = document.querySelectorAll('input[type=radio]');  
+  for (let location of locations) {
     if(location.checked) {
       return;
     }
   }
-  cgu.insertAdjacentHTML('beforestart', '<p>Vous devez choisir une option.</p>');
+  let locationElement = document.getElementById("location6")
+  locationElement.insertAdjacentHTML('afterend', '<p>Vous devez choisir une option.</p>');
 }
   
 
