@@ -527,3 +527,8 @@ footer {
   }
 }
 
+/* Error message style*/
+.error-message {
+  color: #ff0000;
+  font-size: 1rem;
+}
