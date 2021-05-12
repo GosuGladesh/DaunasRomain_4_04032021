@@ -78,7 +78,8 @@ function quantityValidation() {
 }
 function cguValidation() {
   if(cgu.checked == false){
-    cgu.insertAdjacentHTML('afterend', '<p class="error-message">Vous devez vérifier que vous acceptez les termes et conditions.</p>');
+    let cguError = document.querySelector("[for=checkbox1]");
+    cguError.insertAdjacentHTML('afterend', '<p class="error-message">Vous devez vérifier que vous acceptez les termes et conditions.</p>');
     return false;
   }    
   return true;
@@ -90,7 +91,7 @@ function locationValidation() {
       return true;
     }
   }
-  let locationElement = document.getElementById("location6")
+  let locationElement = document.querySelector("[for=location6]")
   locationElement.insertAdjacentHTML('afterend', '<p class="error-message">Vous devez choisir une option.</p>');
   return false;
 }
