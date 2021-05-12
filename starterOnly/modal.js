@@ -95,6 +95,8 @@ function locationValidation() {
   return false;
 }
 
+
+//TODO: toute les validations doivent s'executer et pas s'arreter a la premiere erreur
 function formValidation() {
 
     if(
@@ -110,9 +112,16 @@ function formValidation() {
       }
       return false;
 }
+function errorMessageCleanUp() {
+  let errorMessages = document.querySelectorAll(".error-message");
+  for( let message of errorMessages) {
+    message.remove();
+  }
+}
 
 form[0].addEventListener('submit', (e) => {
   e.preventDefault();
+  errorMessageCleanUp();
   if(formValidation()) {
     form[0].style.display = "none";
     document.querySelector(".modal-body").insertAdjacentHTML('afterbegin','<p>Merci! Votre réservation a été reçue.</p>')
