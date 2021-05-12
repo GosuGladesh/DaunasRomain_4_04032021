@@ -100,14 +100,15 @@ function locationValidation() {
 //TODO: toute les validations doivent s'executer et pas s'arreter a la premiere erreur
 function formValidation() {
 
+  //Comme true peut etre caster en 1, si tout les elements sont vrai on a 7*1 sinon un element et faux, formulaire non valide
     if(
-      firstNameValidation() &&
-      lastNameValidation() &&
-      emailValidation() &&
-      birthdateValidation() &&
-      quantityValidation() &&
-      locationValidation() &&
-      cguValidation()
+      firstNameValidation() +
+      lastNameValidation() +
+      emailValidation() +
+      birthdateValidation() +
+      quantityValidation() +
+      locationValidation() +
+      cguValidation() == 7
       ){
         return true;
       }
