@@ -141,9 +141,9 @@ form.addEventListener('submit', (e) => {
   //remove error message 
   errorMessageCleanUp();
   if(formValidation()) {
-    form[0].style.display = "none";
-    document.querySelector(".modal-body").insertAdjacentHTML('afterbegin','<p>Merci! Votre réservation a été reçue.</p>')
+    form.style.display = "none";
+    document.querySelector(".modal-body").insertAdjacentHTML('afterbegin','<p>Merci! Votre réservation a été reçue.</p>');
+    document.querySelector(".modal-body").insertAdjacentHTML('beforeend',"<button id='fermer' class='btn-submit'> Fermer </button>");
+    document.getElementById('fermer').addEventListener("click",closeModal);
   }
 })
-
-//TODO: red border on error + close button
