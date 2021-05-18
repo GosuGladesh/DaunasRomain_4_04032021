@@ -37,12 +37,14 @@ const email = document.getElementById("email");
 const birthdate = document.getElementById("birthdate");
 const quantity = document.getElementById("quantity");
 const cgu = document.getElementById("checkbox1");
-const form = document.getElementsByName("reserve");
+const form = document.querySelector("[name=reserve]");
 
 
 // Validation functions 
 function firstNameValidation() {
+  //Validation condition: Name longer than 2 characters
   if(firstName.value.length <= 2){
+      //if invalide, insert html <p> with error message
       firstName.insertAdjacentHTML('afterend','<p class="error-message">Veuillez entrer 2 caractères ou plus pour le champ du prénom.</p>');
       return false;
   }
@@ -78,26 +80,30 @@ function quantityValidation() {
 }
 function cguValidation() {
   if(cgu.checked == false){
-    let cguError = document.querySelector("[for=checkbox1]");
+    //selecting checkbox label for the error message placement
+    let cguError = form.querySelector("[for=checkbox1]");
     cguError.insertAdjacentHTML('afterend', '<p class="error-message">Vous devez vérifier que vous acceptez les termes et conditions.</p>');
     return false;
   }    
   return true;
 }
 function locationValidation() {
-  let locations = document.querySelectorAll('input[type=radio]');  
+  //selecting all radio button
+  let locations = form.querySelectorAll('input[type=radio]');
+  //iterating through radio and verifying check value  
   for (let location of locations) {
     if(location.checked) {
       return true;
     }
   }
-  let locationElement = document.querySelector("[for=location6]")
+  //selecting last radio label for the error message placement
+  let locationElement = form.querySelector("[for=location6]")
   locationElement.insertAdjacentHTML('afterend', '<p class="error-message">Vous devez choisir une option.</p>');
   return false;
 }
 
 
-//TODO: toute les validations doivent s'executer et pas s'arreter a la premiere erreur
+
 function formValidation() {
 
   //Comme true peut etre caster en 1, si tout les elements sont vrai on a 7*1 sinon si un element est faux, formulaire non valide
@@ -114,15 +120,20 @@ function formValidation() {
       }
       return false;
 }
+
+//remove error message
 function errorMessageCleanUp() {
+  //select all error message
   let errorMessages = document.querySelectorAll(".error-message");
   for( let message of errorMessages) {
     message.remove();
   }
 }
 
-form[0].addEventListener('submit', (e) => {
+form.addEventListener('submit', (e) => {
+  //prevent refresh on submit
   e.preventDefault();
+  //remove error message 
   errorMessageCleanUp();
   if(formValidation()) {
     form[0].style.display = "none";
