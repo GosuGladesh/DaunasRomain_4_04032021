@@ -46,6 +46,7 @@ function firstNameValidation() {
   if(firstName.value.length <= 2){
       //if invalide, insert html <p> with error message
       firstName.insertAdjacentHTML('afterend','<p class="error-message">Veuillez entrer 2 caractères ou plus pour le champ du prénom.</p>');
+      firstName.style.borderColor = "red";
       return false;
   }
   return true;
@@ -53,6 +54,7 @@ function firstNameValidation() {
 function lastNameValidation() {
   if(lastName.value.length <= 2){
       lastName.insertAdjacentHTML('afterend','<p class="error-message">Veuillez entrer 2 caractères ou plus pour le champ du nom.</p>');
+      lastName.style.borderColor = "red";
       return false;
   }
   return true;
@@ -60,6 +62,7 @@ function lastNameValidation() {
 function birthdateValidation() {
   if(birthdate.value == ""){
       birthdate.insertAdjacentHTML('afterend','<p class="error-message">Vous devez entrer votre date de naissance.</p>');
+      birthdate.style.borderColor = "red";
       return false;
   }
   return true;
@@ -67,6 +70,7 @@ function birthdateValidation() {
 function emailValidation() {
   if(email.value.includes("@") == false){
     email.insertAdjacentHTML('afterend','<p class="error-message">Vous devez entrer un email valide</p>');
+    email.style.borderColor = "red";
     return false;
   }
   return true;
@@ -74,6 +78,7 @@ function emailValidation() {
 function quantityValidation() {
   if( isNaN(parseInt(quantity.value))){
     quantity.insertAdjacentHTML('afterend','<p class="error-message">Vous devez entrer un nombre</p>');
+    quantity.style.borderColor = "red";
     return false;
   }
   return true;
@@ -141,3 +146,4 @@ form.addEventListener('submit', (e) => {
   }
 })
 
+//TODO: red border on error + close button
