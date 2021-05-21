@@ -133,6 +133,12 @@ function errorMessageCleanUp() {
   for( let message of errorMessages) {
     message.remove();
   }
+  //select all text input
+  let textInputs = document.querySelectorAll(".text-control");
+  for( let textInput of textInputs) {
+    //swap border color back to original
+    textInput.style.borderColor = "#ccc";
+  }
 }
 
 form.addEventListener('submit', (e) => {
