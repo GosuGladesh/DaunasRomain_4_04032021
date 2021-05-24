@@ -14,53 +14,65 @@ const locations = form.querySelectorAll('input[type=radio]');
 function firstNameValidation() {
   //Validation condition: Name longer than 2 characters
   if(firstName.value.length <= 2){
-      //if invalide, insert html <p> with error message
+      //Si le champ est non valide, affichage de l'erreur
       firstName.parentElement.setAttribute('data-error-visible', "true");
+      //definition du message d'erreur
       firstName.parentElement.setAttribute('data-error','Veuillez entrer 2 caractères ou plus pour le champ du prénom.');
-      firstName.style.borderColor = "red";
+      
       return false;
   }
   return true;
 }
 function lastNameValidation() {
+  //Validation condition: Name longer than 2 characters
   if(lastName.value.length <= 2){
+    //Si le champ est non valide, affichage de l'erreur
       lastName.parentElement.setAttribute('data-error-visible', "true");
+      //definition du message d'erreur
       lastName.parentElement.setAttribute('data-error','Veuillez entrer 2 caractères ou plus pour le champ du nom.');
-      lastName.style.borderColor = "red";
+      
       return false;
   }
   return true;
 }
 function birthdateValidation() {
   if(birthdate.value == ""){
+    //Si le champ est non valide, affichage de l'erreur
     birthdate.parentElement.setAttribute('data-error-visible', "true");
+    //definition du message d'erreur
     birthdate.parentElement.setAttribute('data-error','Vous devez entrer votre date de naissance.');
-      birthdate.style.borderColor = "red";
+     
       return false;
   }
   return true;
 }
 function emailValidation() {
-  if(email.value.includes("@") == false){
-    email.parentElement.setAttribute('data-error-visible', "true");
+  if(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9]+\.[a-zA-Z0-9]+$/.test(email.value) == false){
+      //Si le champ est non valide, affichage de l'erreur
+      email.parentElement.setAttribute('data-error-visible', "true");
+      //definition du message d'erreur
       email.parentElement.setAttribute('data-error','Veuillez entrer un email valide.');
-    email.style.borderColor = "red";
+   
     return false;
   }
   return true;
 }
 function quantityValidation() {
   if( isNaN(parseInt(quantity.value))){
-    quantity.parentElement.setAttribute('data-error-visible', "true");
+      //Si le champ est non valide, affichage de l'erreur
+      quantity.parentElement.setAttribute('data-error-visible', "true");
+      //definition du message d'erreur
       quantity.parentElement.setAttribute('data-error','Veuillez entrer un nombre.');
-    quantity.style.borderColor = "red";
+    
     return false;
   }
   return true;
 }
 function cguValidation() {
   if(cgu.checked == false){
+    //Si le champ est non valide, affichage de l'erreur
       cgu.parentElement.setAttribute('data-error-visible', "true");
+      //definition du message d'erreur
       cgu.parentElement.setAttribute('data-error','Vous devez vérifier que vous acceptez les termes et conditions.');
     return false;
   }    
@@ -73,7 +85,7 @@ function locationValidation() {
       return true;
     }
   }
-  //selecting last radio label for the error message placement
+  //selecting parent of first location element
   locations[0].parentElement.setAttribute('data-error-visible', "true");
   locations[0].parentElement.setAttribute('data-error','Vous devez choisir un lieu.');
   return false;
@@ -100,19 +112,11 @@ function formValidation() {
 
 //remove error message
 function errorMessageCleanUp() {
-   //select all text input
-  let textInputs = document.querySelectorAll(".text-control");
-  for( let textInput of textInputs) {
-    //swap border color back to original
-    textInput.style.borderColor = "#ccc";
+  //hide error on all formdata 
+  let formDatas = form.querySelectorAll(".formData");
+  for(let formData of formDatas) {
+    formData.setAttribute('data-error-visible', 'false');
   }
-  firstName.parentElement.setAttribute('data-error-visible', 'false');
-  lastName.parentElement.setAttribute('data-error-visible', 'false');
-  email.parentElement.setAttribute('data-error-visible', 'false');
-  birthdate.parentElement.setAttribute('data-error-visible', 'false');
-  quantity.parentElement.setAttribute('data-error-visible', 'false');
-  cgu.parentElement.setAttribute('data-error-visible', 'false');
-  locations[0].parentElement.setAttribute('data-error-visible', 'false');
 }
 
 form.addEventListener('submit', (e) => {
@@ -121,9 +125,13 @@ form.addEventListener('submit', (e) => {
   //remove error message 
   errorMessageCleanUp();
   if(formValidation()) {
+    //hide form
     form.style.display = "none";
+    //add Succes message
     document.querySelector(".modal-body").insertAdjacentHTML('afterbegin','<p>Merci! Votre réservation a été reçue.</p>');
+    //add close button
     document.querySelector(".modal-body").insertAdjacentHTML('beforeend',"<button id='fermer' class='btn-submit'> Fermer </button>");
-    document.getElementById('fermer').addEventListener("click",() => { modalbg.style.display = "none"});
+    //bind close fuction to button
+    document.getElementById('fermer').addEventListener("click",closeModal);
   }
 })
