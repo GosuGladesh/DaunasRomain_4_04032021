@@ -97,7 +97,7 @@ img {
   .topnav a.icon {
     float: right;
     display: block;
-    margin-top: -15px;
+    /*margin-top: -15px;*/
   }
 } 
 
@@ -420,7 +420,7 @@ input[data-error]::after {
   color: #fff;
   position: relative;
   text-align: left;
-  min-width: 424px;
+  /*min-width: 424px;*/
 }
 .hero-content::after {
   content: "";
@@ -495,7 +495,8 @@ footer {
     display: none;
   }
   .hero-headline {
-    font-size: 4.5rem;
+    /*font-size: 4.5rem;*/
+    font-size: 3.5rem;
     white-space: normal;
   }
   .hero-text {
