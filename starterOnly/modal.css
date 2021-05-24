@@ -526,9 +526,3 @@ footer {
     opacity: 1;
   }
 }
-
-/* Error message style*/
-.error-message {
-  color: #ff0000;
-  font-size: 0.7rem;
-}
