@@ -421,6 +421,7 @@ input[data-error]::after {
   position: relative;
   text-align: left;
   /*min-width: 424px;*/
+  max-width: 424px;
 }
 .hero-content::after {
   content: "";
@@ -436,7 +437,8 @@ input[data-error]::after {
   z-index: 1;
 }
 .hero-headline {
-  font-size: 6rem;
+  /*font-size: 6rem;*/
+  font-size: 4.5rem;
   font-weight: normal;
   white-space: nowrap;
 }

@@ -128,7 +128,7 @@ form.addEventListener('submit', (e) => {
     //hide form
     form.style.display = "none";
     //add Succes message
-    document.querySelector(".modal-body").insertAdjacentHTML('afterbegin','<p>Merci! Votre réservation a été reçue.</p>');
+    document.querySelector(".modal-body").insertAdjacentHTML('afterbegin','<p style="padding:300px 0">Merci! Votre réservation a été reçue.</p>');
     //add close button
     document.querySelector(".modal-body").insertAdjacentHTML('beforeend',"<button id='fermer' class='btn-submit'> Fermer </button>");
     //bind close fuction to button
