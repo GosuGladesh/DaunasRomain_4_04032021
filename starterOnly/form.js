@@ -36,7 +36,7 @@ function lastNameValidation() {
   return true;
 }
 function birthdateValidation() {
-  if(birthdate.value == ""){
+    if(Date.now() <= Date.parse(birthdate.value)){
     //Si le champ est non valide, affichage de l'erreur
     birthdate.parentElement.setAttribute('data-error-visible', "true");
     //definition du message d'erreur
