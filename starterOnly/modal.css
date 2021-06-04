@@ -585,6 +585,12 @@ footer {
     text-align: center;
     font-size: 1rem;
   }
+  .bground {
+    background: none;
+  }
+  .content {
+    margin: 70px auto;
+  }
 }
 @keyframes modalopen {
   from {
