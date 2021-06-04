@@ -13,7 +13,7 @@ const locations = form.querySelectorAll('input[type=radio]');
 // Validation functions 
 function firstNameValidation() {
   //Validation condition: Name longer than 2 characters
-  if(firstName.value.length < 2){
+  if(firstName.value.length < 2 || /^[a-zA-Z]+$/.test(firstName.value) == false){
       //Si le champ est non valide, affichage de l'erreur
       firstName.parentElement.setAttribute('data-error-visible', "true");
       //definition du message d'erreur
@@ -25,7 +25,7 @@ function firstNameValidation() {
 }
 function lastNameValidation() {
   //Validation condition: Name longer than 2 characters
-  if(lastName.value.length < 2){
+  if(lastName.value.length < 2 || /^[a-zA-Z]+$/.test(lastName.value) == false){
     //Si le champ est non valide, affichage de l'erreur
       lastName.parentElement.setAttribute('data-error-visible', "true");
       //definition du message d'erreur
